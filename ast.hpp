@@ -69,6 +69,51 @@ namespace AST {
 	public:
 		std::string name;
 	};
+	
+    //表达式部分
+    class Expression{
+        int exp;
+    }
+    //条件表达式
+    class ConditionExp: public Expression{
+    	public:  
+	        int operator;
+	        Expression& lcond;
+	        Expression& rcond;
+    }
+    //数值
+    class Number: public Expression{
+        public:
+            int numbervalue;
+    }
+    //左值表达式
+    class LeftValueExp: public Expression{
+
+    }
+
+    //函数实参
+    class FunctionActualParams;
+    //函数调用表达式 函数名+实参列表（不需要返回值）
+    class FunctionCallExp: public Expression{
+        public:
+            Id& functionName;
+            FunctionActualParams& arugments;
+    }
+
+    //一元表达式
+    class UnaryExpression: public Expression{
+        public:
+            int operator;
+            Expression& rcond;
+            
+    }
+    //二进制表达式
+    class BinaryEXpression: public Expression{
+        public: 
+            int operator;
+            Expression& lcond;
+            Expression& rcond;
+    }
 }
 
 #endif
